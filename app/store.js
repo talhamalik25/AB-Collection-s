@@ -9,8 +9,9 @@ export function StoreProvider({ children }) {
   const [searchOpen, setSearchOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [wishlist, setWishlist] = useState([]);
-  useEffect(() => { try { setCart(JSON.parse(localStorage.getItem("ab-collection-cart") || "[]")); } catch {} setReady(true); }, []);
+  useEffect(() => { const timer=window.setTimeout(() => { try { setCart(JSON.parse(localStorage.getItem("ab-collection-cart") || "[]")); setWishlist(JSON.parse(localStorage.getItem("ab-collection-wishlist") || "[]")); } catch {} setReady(true); },0); return () => window.clearTimeout(timer); }, []);
   useEffect(() => { if (ready) localStorage.setItem("ab-collection-cart", JSON.stringify(cart)); }, [cart, ready]);
+  useEffect(() => { if (ready) localStorage.setItem("ab-collection-wishlist", JSON.stringify(wishlist)); }, [wishlist, ready]);
   const add = (id, size="M", color=null) => setCart((c) => { const i=c.findIndex(x=>x.id===id&&x.size===size&&x.color===color); if(i<0)return [...c,{id,size,color,qty:1}]; return c.map((x,j)=>j===i?{...x,qty:x.qty+1}:x); });
   const remove = (id,size,color) => setCart(c=>c.filter(x=>x.id!==id||x.size!==size||x.color!==color));
   const quantity = (id,size,color,qty) => setCart(c=>c.map(x=>x.id===id&&x.size===size&&x.color===color?{...x,qty:Math.max(1,qty)}:x));
