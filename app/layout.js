@@ -3,8 +3,8 @@ import { StoreProvider } from "./store";
 import { Footer, Header, Search } from "./components";
 
 export const metadata = {
-  title: "Gulnaar Studio — Thoughtful pieces for everyday",
-  description: "A love letter to getting dressed. Discover considered Pakistani fashion, made with care.",
+  title: "AB Collection — Pakistani Fashion, Thoughtfully Made",
+  description: "Discover AB Collection: considered Pakistani fashion for every occasion.",
 };
 
 export default function RootLayout({ children }) {
