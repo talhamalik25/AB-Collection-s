@@ -14,6 +14,6 @@ export function StoreProvider({ children }) {
   const remove = (id,size) => setCart(c=>c.filter(x=>x.id!==id||x.size!==size));
   const quantity = (id,size,qty) => setCart(c=>c.map(x=>x.id===id&&x.size===size?{...x,qty:Math.max(1,qty)}:x));
   const count = cart.reduce((n,x)=>n+x.qty,0);
-  return <Store.Provider value={{cart,add,remove,quantity,count,searchOpen,setSearchOpen,menuOpen,setMenuOpen,products}}>{children}</Store.Provider>;
+  return <Store.Provider value={{cart,add,remove,quantity,clearCart:()=>setCart([]),count,searchOpen,setSearchOpen,menuOpen,setMenuOpen,products}}>{children}</Store.Provider>;
 }
 export const useStore = () => useContext(Store);
