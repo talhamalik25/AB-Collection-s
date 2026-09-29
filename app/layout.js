@@ -3,7 +3,7 @@ import { StoreProvider } from "./store";
 import { Footer, Header, Search } from "./components";
 
 export const metadata = {
-  title: "AB Collection — Pakistani Fashion, Thoughtfully Made",
+  title: "AB Collection — Fragrance and Bags",
   description: "Discover AB Collection: considered fragrances and bags for every occasion.",
 };
 
